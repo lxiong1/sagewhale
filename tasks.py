@@ -5,6 +5,7 @@ from invoke import task
 
 PROJECT_DIRECTORY = dirname(realpath(__file__))
 SERVER_DIRECTORY = f"{PROJECT_DIRECTORY}/server"
+SERVER_ENTRYPOINT = f"{SERVER_DIRECTORY}/entrypoint.sh"
 PYLINT_CONFIG = f"{SERVER_DIRECTORY}/.pylintrc"
 PYTHON_FILES = '$(find . -iname "*.py")'
 
@@ -51,3 +52,12 @@ def pycheck(context):
     """
     Format, lint, analyze code complexity, and security code scan
     """
+
+
+@task()
+def server(context):
+    """
+    Starts the server
+    """
+    print("\nStarting the server...\n")
+    context.run(SERVER_ENTRYPOINT)
