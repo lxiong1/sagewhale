@@ -57,7 +57,7 @@ def pycheck(context):
 @task()
 def server(context):
     """
-    Starts the server
+    Starts the server with database container
     """
     print("\nStarting the server...\n")
     context.run(SERVER_ENTRYPOINT)

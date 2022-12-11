@@ -2,7 +2,7 @@
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/) [![forthebadge](https://forthebadge.com/images/badges/made-with-typescript.svg)](https://forthebadge.com)
 
-<img src="./static/sagewhale-logo.svg" width=55% height=55%>
+<img src="./static/sagewhale-logo.svg" width=60% height=60%>
 
 Sagewhale is a web application that allows ingestion of JSON or CSV files containing email subscriber performance data. The data can be analyzed and visualized to give insights about different product types in relation to subscriber demographics.
 
@@ -55,6 +55,7 @@ Available tasks:
   pyformat   Formats Python code using black
   pylint     Lints Python code using pylint
   pysec      Finds common security issues in Python code
+  server     Starts the server with database container
 ```
 
 These are useful to use DURING development to help you develop smarter, more efficiently, and to coding standards.

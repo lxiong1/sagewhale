@@ -50,7 +50,7 @@ email_performance_model = api.model(
             description="UUID identifying email performance of subscriber",
         ),
         "products": fields.List(
-            email_product_model,
+            fields.Nested(email_product_model),
             required=False,
             description="Product type that was emailed to subscriber",
         ),
@@ -61,9 +61,7 @@ email_performance_model = api.model(
 subscriber_model = api.model(
     "Subscriber",
     {
-        "id": fields.String(
-            required=True, description="UUID identifying subscriber"
-        ),
+        "id": fields.String(required=True, description="UUID identifying subscriber"),
         "first_name": fields.String(
             required=False,
             description="First name of subscriber",
@@ -106,7 +104,7 @@ class SubscriberInfo(Resource):
         return {}
 
     @api.expect([subscriber_info_model], validate=True)
-    # @api.marshal_list_with([subscriber_info_model], code=201)
+    @api.marshal_list_with([subscriber_info_model], code=201)
     def post(self):
         """Store JSON or CSV file with content containing subscriber information"""
         return [], 201
