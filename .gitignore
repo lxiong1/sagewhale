@@ -1,0 +1,2 @@
+# directory bound to docker postgresql instance for persistence
+data/*
