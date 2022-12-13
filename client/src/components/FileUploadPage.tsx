@@ -2,6 +2,7 @@ import { Box, Image } from "@chakra-ui/react";
 import FileUploadButton from "./FileUploadButton";
 import sagewhale from "../images/sagewhale-logo.png";
 import TypeWriterEffect from "./TypeWriterEffect";
+import Dropzone from "react-dropzone";
 
 function FileUploadPage() {
   return (
