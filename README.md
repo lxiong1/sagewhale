@@ -10,7 +10,7 @@ Sagewhale is a web application that allows ingestion of JSON or CSV files contai
 
 ### Prerequisites
 
-**Disclaimer:** The instructions below assume MacOS. If you're on a Windows machine, you will have to use `scoop` or `chocolatey` to install `pyenv`, `pipenv`, and `docker`. The setup may be different.
+**Disclaimer:** The instructions below assume MacOS. If you're on a Windows machine, you will have to use `scoop` or `chocolatey` as your machine package managers. The setup may be different. Also be sure to check out official documentation on setup if necessary.
 
 Local machine dependencies:
 
@@ -48,7 +48,7 @@ Simply run:
 invoke server
 ```
 
-The [development task](#development-tasks) runs the `entrypoint.sh` file. Shortcut way to not have to think about how to stand it up since most useful tasks are under the `invoke` command.
+The [development task](#development-tasks) runs the `entrypoint.sh` file. Shortcut way to not have to think about how to stand it up since most useful tasks are under the `invoke` command. Another thing to note is that a `data` directory will be created at the root of the project to mount to the database container that is stood up during startup for persistence.
 
 You can visit `http://127.0.0.1:5000` for the Swagger documentation after startup.
 
@@ -74,12 +74,22 @@ These are useful to use DURING development to help you develop smarter, more eff
 
 ### Prerequisites
 
-TBD
+**Disclaimer:** The instructions below assume MacOS. If you're on a Windows machine, you will have to use `scoop` or `chocolatey` as your machine package managers. The setup may be different. Also be sure to check out official documentation on setup if necessary.
+
+Local machine dependencies:
+
+- `volta`: Install by running `curl https://get.volta.sh | bash`
+  - Make sure to install a `node` version by running `volta install node@<VERSION>`
+  - Make sure to install `yarn` by running `volta install yarn`
 
 ### Setup
 
 TBD
 
 ### Run
+
+TBD
+
+## Improvement Considerations
 
 TBD
