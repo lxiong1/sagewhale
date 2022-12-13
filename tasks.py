@@ -6,8 +6,9 @@ from invoke import task
 PROJECT_DIRECTORY = dirname(realpath(__file__))
 SERVER_DIRECTORY = f"{PROJECT_DIRECTORY}/server"
 SERVER_ENTRYPOINT = f"{SERVER_DIRECTORY}/entrypoint.sh"
+SERVER_TESTS_DIRECTORY = f"{SERVER_DIRECTORY}/tests"
 CLIENT_DIRECTORY = f"{PROJECT_DIRECTORY}/client"
-TESTS_DIRECTORY = f"{SERVER_DIRECTORY}/tests"
+CLIENT_TESTS_DIRECTORY = f"{CLIENT_DIRECTORY}/src/__tests__"
 PYLINT_CONFIG = f"{SERVER_DIRECTORY}/.pylintrc"
 PYTHON_FILES = '$(find . -iname "*.py")'
 
@@ -54,8 +55,17 @@ def pytest(context):
     """
     Runs Python tests
     """
-    print(f"\nRunning tests {TESTS_DIRECTORY}...\n")
-    context.run(f"pytest {TESTS_DIRECTORY}")
+    print(f"\nRunning tests in {SERVER_TESTS_DIRECTORY}...\n")
+    context.run(f"pytest {SERVER_TESTS_DIRECTORY}")
+
+
+@task()
+def tstest(context):
+    """
+    Runs Typescript tests
+    """
+    print(f"\nRunning tests in {CLIENT_TESTS_DIRECTORY}...\n")
+    context.run(f"cd {CLIENT_TESTS_DIRECTORY} && yarn test --watchAll=false")
 
 
 @task(pyformat, pylint, pycomp, pysec)

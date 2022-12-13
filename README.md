@@ -111,6 +111,7 @@ Available tasks:
   pytest     Runs Python tests
   server     Starts the server with database container
   tsdep      Installs Typescript project dependencies
+  tstest     Runs Typescript tests
 ```
 
 These tasks are not meant to be Python-specific although it is python dependent. They are agnostic of programming language and can be used to define and run any development tasks. It's useful to use them **during** development to help you build smarter, more efficiently, and to coding standards.
