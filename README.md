@@ -41,7 +41,14 @@ pipenv shell --python <PYTHON_VERSION>
 
 ### Run
 
-TBD
+Simply run:
+```bash
+invoke server
+```
+
+The [development task](#development-tasks) runs the `entrypoint.sh` file. Shortcut way to not have to think about how to stand it up since most useful tasks are under the `invoke` command.
+
+You can visit `http://127.0.0.1:5000` for the Swagger documentation after startup.
 
 ### Development Tasks
 
@@ -55,6 +62,7 @@ Available tasks:
   pyformat   Formats Python code using black
   pylint     Lints Python code using pylint
   pysec      Finds common security issues in Python code
+  pytest     Runs Python tests
   server     Starts the server with database container
 ```
 

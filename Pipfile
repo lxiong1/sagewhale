@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 flask = "==2.2.2"
 flask-restx = "==1.0.3"
+flask-sqlalchemy = "==3.0.2"
+psycopg2-binary = "==2.9.5"
+python-dotenv = "==0.21.0"
 
 [dev-packages]
 black = "*"
@@ -13,6 +16,9 @@ invoke = "*"
 bandit = "*"
 pylint = "*"
 radon = "*"
+pytest = "*"
+pytest-mock = "*"
+pytest-describe = "*"
 
 [requires]
 python_version = "3.10"

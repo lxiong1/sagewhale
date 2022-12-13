@@ -6,6 +6,7 @@ from invoke import task
 PROJECT_DIRECTORY = dirname(realpath(__file__))
 SERVER_DIRECTORY = f"{PROJECT_DIRECTORY}/server"
 SERVER_ENTRYPOINT = f"{SERVER_DIRECTORY}/entrypoint.sh"
+TESTS_DIRECTORY = f"{SERVER_DIRECTORY}/tests"
 PYLINT_CONFIG = f"{SERVER_DIRECTORY}/.pylintrc"
 PYTHON_FILES = '$(find . -iname "*.py")'
 
@@ -45,6 +46,15 @@ def pysec(context):
     """
     print(f"\nLooking for common security issues in {SERVER_DIRECTORY}...\n")
     context.run(f"bandit -r --exit-zero {SERVER_DIRECTORY}")
+
+
+@task()
+def pytest(context):
+    """
+    Runs Python tests
+    """
+    print(f"\nRunning tests {TESTS_DIRECTORY}...\n")
+    context.run(f"pytest {TESTS_DIRECTORY}")
 
 
 @task(pyformat, pylint, pycomp, pysec)

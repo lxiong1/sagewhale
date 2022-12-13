@@ -1,11 +1,23 @@
-from flask_restx import Namespace, Resource, fields
+import json
+from flask_restx import Api, Resource, fields
+from werkzeug.datastructures import FileStorage
+from controllers.subscriber_info_controller import SubscriberInfoController
+from models.responses import SuccessResponse, FailResponse
+from http import HTTPStatus
+from utils.database import Database
 
-api = Namespace(
+
+api = Api(
+    title="Subscriber Info API",
+    version="0.0.1",
+    description="API that ingests JSON or CSV files containing subscriber information",
+)
+namespace = api.namespace(
     "subscriber_info",
     description="Subscriber information related operations",
 )
 
-demographics_model = api.model(
+demographics_model = namespace.model(
     "Demographics",
     {
         "id": fields.String(
@@ -27,7 +39,7 @@ demographics_model = api.model(
     },
 )
 
-email_product_model = api.model(
+email_product_model = namespace.model(
     "EmailProduct",
     {
         "product_type": fields.String(
@@ -42,7 +54,7 @@ email_product_model = api.model(
     },
 )
 
-email_performance_model = api.model(
+email_performance_model = namespace.model(
     "EmailPeformance",
     {
         "id": fields.String(
@@ -58,7 +70,7 @@ email_performance_model = api.model(
     },
 )
 
-subscriber_model = api.model(
+subscriber_model = namespace.model(
     "Subscriber",
     {
         "id": fields.String(required=True, description="UUID identifying subscriber"),
@@ -77,7 +89,7 @@ subscriber_model = api.model(
     },
 )
 
-subscriber_info_model = api.model(
+subscriber_info_model = namespace.model(
     "SubscriberInfo",
     {
         "subscriber": fields.Nested(
@@ -96,15 +108,25 @@ subscriber_info_model = api.model(
     },
 )
 
+upload_parser = namespace.parser()
+upload_parser.add_argument("file", location="files", type=FileStorage, required=True)
 
-@api.route("/<string:id>")
-class SubscriberInfo(Resource):
-    def get(self, id):
-        """Get subscriber information by id"""
-        return {}
 
-    @api.expect([subscriber_info_model], validate=True)
-    @api.marshal_list_with([subscriber_info_model], code=201)
+@namespace.route("/upload/json")
+class SubscriberInfoJsonUpload(Resource):
+    @namespace.expect(upload_parser)
     def post(self):
-        """Store JSON or CSV file with content containing subscriber information"""
-        return [], 201
+        """Store JSON file with content containing subscriber information"""
+        args = upload_parser.parse_args()
+        uploaded_file = args.get("file")
+
+        if ".json" not in uploaded_file.filename:
+            return (
+                FailResponse(message="Requires JSON file").as_dict(),
+                HTTPStatus.BAD_REQUEST,
+            )
+
+        file_content = json.loads(uploaded_file.read())
+        SubscriberInfoController(Database()).save_file_content(file_content)
+
+        return SuccessResponse(data=file_content).as_dict(), HTTPStatus.CREATED
