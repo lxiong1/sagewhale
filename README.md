@@ -4,7 +4,7 @@
 
 <img src="./static/sagewhale-logo.svg" width=60% height=60%>
 
-Sagewhale is a web application that allows ingestion of JSON or CSV files containing email subscriber performance data. The data can be analyzed and visualized to give insights about different product types in relation to subscriber demographics.
+Sagewhale is a web application that allows ingestion of JSON or CSV files containing email subscriber performance data. The data can be analyzed and visualized to give insights about emailed product performances in relation to subscriber demographics.
 
 ## Server
 
@@ -19,6 +19,8 @@ Local machine dependencies:
     - You can get the list of avaliable versions by running `pyenv install --list`
   - Set global python version by running `pyenv global <PYTHON_VERSION>`
 - `pipenv`: Install by running `brew install pipenv`
+- `docker`: Install by running `brew install docker`
+- `docker-compose`: Install by running `brew install docker-compose`
 
 ### Setup
 
