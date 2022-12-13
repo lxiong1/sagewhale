@@ -111,6 +111,7 @@ Available tasks:
   pytest     Runs Python tests
   server     Starts the server with database container
   tsdep      Installs Typescript project dependencies
+  tsformat   Formats Typescript code (and JSON) using prettier
   tstest     Runs Typescript tests
 ```
 

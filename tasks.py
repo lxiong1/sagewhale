@@ -22,6 +22,15 @@ def pyformat(context):
     context.run(f"black {PYTHON_FILES}")
 
 
+@task
+def tsformat(context):
+    """
+    Formats Typescript code (and JSON) using prettier
+    """
+    print("\nFormatting Typescript code...\n")
+    context.run(f"cd client && yarn prettier --write .")
+
+
 @task()
 def pylint(context):
     """
