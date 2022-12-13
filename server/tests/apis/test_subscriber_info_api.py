@@ -1,7 +1,18 @@
 import json
 from io import BytesIO
+from http import HTTPStatus
 import pytest
 from sagewhale import app
+
+
+def describe_get():
+    def test_should_retrieve_all_subscriber_info(test_client):
+        response = test_client.get(
+            "/subscriber_info",
+            content_type="application/json",
+        )
+
+        assert response.status_code == HTTPStatus.OK
 
 
 def describe_post():
@@ -15,7 +26,7 @@ def describe_post():
             content_type="multipart/form-data",
         )
 
-        assert "Success" in response.data.decode()
+        assert response.status_code == HTTPStatus.CREATED
 
     def test_should_respond_with_error_when_payload_not_file(test_client):
         response = test_client.post(

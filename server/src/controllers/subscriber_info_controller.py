@@ -5,6 +5,19 @@ class SubscriberInfoController:
     def __init__(self, database):
         self._database = database
 
+    def get_all_subscriber_info(self):
+        """Retrieves all subscriber information from database"""
+        results = self._database.session.execute(
+            """
+            SELECT subscriber.id, gender, age, race, marital_status, education, household_income, products
+            FROM subscriber
+            JOIN demographics ON subscriber.id = demographics.subscriber_id
+            JOIN email_performance ON subscriber.id = email_performance.subscriber_id
+            """
+        )
+
+        return results.mappings().all()
+
     def save_file_content(self, file_content):
         """Saves subscriber information into database"""
         (

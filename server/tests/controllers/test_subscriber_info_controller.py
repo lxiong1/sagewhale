@@ -1,6 +1,17 @@
 from controllers.subscriber_info_controller import SubscriberInfoController
 
 
+def describe_get_all_subscriber_info():
+    def test_should_retrieve_all_subscriber_info(mocker, db_mock):
+        db_mock.session.execute.return_value = mocker.Mock(name="CursorResult")
+        db_mock.session.execute.return_value.mappings.return_value.all.return_value = []
+        controller = SubscriberInfoController(db_mock)
+
+        result = controller.get_all_subscriber_info()
+
+        assert result == []
+
+
 def describe_save_file_content():
     def test_should_save_subscriber_info_to_db(db_mock, file_content):
         db_mock.session.get.return_value = None

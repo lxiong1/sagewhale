@@ -110,6 +110,16 @@ subscriber_info_model = namespace.model(
 
 upload_parser = namespace.parser()
 upload_parser.add_argument("file", location="files", type=FileStorage, required=True)
+controller = SubscriberInfoController(Database())
+
+
+@namespace.route("")
+class SubscriberInfo(Resource):
+    def get(self):
+        """Retrieves all subscriber information"""
+        result = controller.get_all_subscriber_info()
+
+        return SuccessResponse(data=result).as_dict(), HTTPStatus.OK
 
 
 @namespace.route("/upload/json")
@@ -127,6 +137,6 @@ class SubscriberInfoJsonUpload(Resource):
             )
 
         file_content = json.loads(uploaded_file.read())
-        SubscriberInfoController(Database()).save_file_content(file_content)
+        controller.save_file_content(file_content)
 
         return SuccessResponse(data=file_content).as_dict(), HTTPStatus.CREATED
