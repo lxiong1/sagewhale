@@ -24,13 +24,19 @@ Local machine dependencies:
 
 ### Setup
 
+*Note: The setup assumes you have installed local machine dependencies properly.*
+
 To get the project setup, run the following command in this project directory:
 
+```bash
+invoke pydep
+```
+OR
 ```bash
 pipenv sync --dev
 ```
 
-This will install the necessary project dependencies as well as developed-related tools based on the `Pipfile.lock`. This file is our source of truth for all things dependency.
+This will install the necessary project dependencies based on the `Pipfile.lock`. This file is our source of truth for all things dependency.
 
 To start development of the `server`, remember to start a virtual environment with (uses `pyenv` global version):
 ```bash
@@ -52,24 +58,6 @@ The [development task](#development-tasks) runs the `entrypoint.sh` file. Shortc
 
 You can visit `http://127.0.0.1:5000` for the Swagger documentation after startup.
 
-### Development Tasks
-
-Running `invoke --list` will list out all available development tasks defined in the `tasks.py` file:
-
-```bash
-Available tasks:
-
-  pycheck    Format, lint, analyze code complexity, and security code scan
-  pycomp     Calculates cyclomatic complexity of Python code
-  pyformat   Formats Python code using black
-  pylint     Lints Python code using pylint
-  pysec      Finds common security issues in Python code
-  pytest     Runs Python tests
-  server     Starts the server with database container
-```
-
-These are useful to use DURING development to help you develop smarter, more efficiently, and to coding standards.
-
 ## Client
 
 ### Prerequisites
@@ -84,12 +72,49 @@ Local machine dependencies:
 
 ### Setup
 
-TBD
+*Note: The setup assumes you have installed local machine dependencies properly.*
+
+To get the project setup, run the following command in this project directory:
+
+```bash
+invoke tsdep
+```
+OR
+```bash
+cd client && yarn install
+```
 
 ### Run
 
-TBD
+Simply run:
+```bash
+invoke client
+```
 
-## Improvement Considerations
+You can visit `http://localhost:3000` to see the application after startup.
+
+## Development Tasks
+
+Running `invoke --list` will list out all available development tasks defined in the `tasks.py` file:
+
+```bash
+Available tasks:
+
+  alldep     Installs all project dependencies
+  client     Starts the client
+  pycheck    Format, lint, analyze code complexity, and security code scan
+  pycomp     Calculates cyclomatic complexity of Python code
+  pydep      Installs Python project dependencies
+  pyformat   Formats Python code using black
+  pylint     Lints Python code using pylint
+  pysec      Finds common security issues in Python code
+  pytest     Runs Python tests
+  server     Starts the server with database container
+  tsdep      Installs Typescript project dependencies
+```
+
+These tasks are not meant to be Python-specific although it is python dependent. They are agnostic of programming language and can be used to define and run any development tasks. It's useful to use them **during** development to help you build smarter, more efficiently, and to coding standards.
+
+## TODOs & Improvement Considerations
 
 TBD
