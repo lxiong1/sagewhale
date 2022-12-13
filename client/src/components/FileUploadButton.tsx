@@ -1,9 +1,14 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 
 const FileUploadButton = function () {
   return (
-    <Button colorScheme="blue" variant={"solid"} size={"md"}>
-      Upload File
+    <Button
+      colorScheme="alphaBlack"
+      variant={"outline"}
+      size={"lg"}
+      _hover={{ bg: "#eeeeee" }}
+    >
+      <Text as={"b"}>Upload File</Text>
     </Button>
   );
 };
