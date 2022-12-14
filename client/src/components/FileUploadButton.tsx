@@ -1,11 +1,11 @@
 import { Button, Text } from "@chakra-ui/react";
 import { useDropzone } from "react-dropzone";
 import { useEffect } from "react";
-import postJsonFiles from "../apis/sageWhaleApi";
+import { postJsonFile } from "../apis/sageWhaleApi";
 import useApi from "../hooks/useApi";
 
 const FileUploadButton = function () {
-  const jsonFiles = useApi(postJsonFiles);
+  const jsonFiles = useApi(postJsonFile);
   let formData = new FormData();
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({

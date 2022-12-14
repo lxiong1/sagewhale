@@ -35,6 +35,7 @@ Local machine dependencies:
   - Set global python version by running `pyenv global <PYTHON_VERSION>`
 - `pipenv`: Install by running `brew install pipenv`
 - `docker`: Install by running `brew install docker`
+  - **Make sure you have this running on your machine as the `server` depends on it**
 - `docker-compose`: Install by running `brew install docker-compose`
 
 ### Setup
@@ -184,6 +185,7 @@ Improvements that can be made but not exclusive to:
   - etc.
 - IaC (e.g Terraform) to standup and configure cloud servers
 - Deployments using cloud services (e.g. GCP)
+- Configure environments for testing purposes for both server and client
 - Create data factories for tests
 - Quick smoke tests (assuming system built enough)
 - Log at critical points in server and client
