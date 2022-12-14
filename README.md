@@ -2,11 +2,13 @@
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/) [![forthebadge](https://forthebadge.com/images/badges/made-with-typescript.svg)](https://forthebadge.com)
 
-<img src="./static/sagewhale-logo.svg" width=60% height=60%>
+<img src="./static/sagewhale-logo.svg" width=75% height=75%>
 
 Sagewhale is a web application that allows ingestion of JSON or CSV files containing email subscriber performance data. The data can be analyzed and visualized to give insights about emailed product performances in relation to subscriber demographics.
 
 ## Server
+
+<img src="./static/sagewhale-swagger.png" width=90% height=90%>
 
 ### Technology Stack
 
@@ -78,6 +80,8 @@ You can visit `http://localhost:5000` for the Swagger documentation after startu
 
 ## Client
 
+<img src="./static/sagewhale-ui.gif" width=75% height=75%>
+
 ### Technology Stack
 
 High-level stack but not exclusive to:
@@ -143,59 +147,3 @@ Available tasks:
 ```
 
 These tasks are not meant to be Python-specific although it is python dependent. They are agnostic of programming language and can be used to define and run any development tasks. It's useful to use them **during** development to help you build smarter, more efficiently, and to coding standards.
-
-## Project Time Estimation & Actual Time Spent
-
-**Time Estimation**
-
-I estimated that this project could be completed within a week assuming 6-8 hours for 5 days. However, I don't think that it is as easy as saying this because it really depends on how much time an engineer should spend on the small details like refactoring for readability, investigating gaps where errors can occur, investigating performance bottlenecks or improvements, researching appropriate design patterns with given situations, etc. These things bring in factors that can't quite be estimated well for. With all the aforementioned considered, I would estimate a couple of weeks to optimize the project.
-
-**Actual Time Spent**
-
-I roughly spent about 24 hours on the project and didn't complete it. I think this is fine considering my [introspection](#introspection).
-
-## What's Built, TODOs, & Improvement Considerations
-
-What was built but not exclusive to:
-- Server with GET and POST endpoints
-  - GET retrieves all subscriber information
-  - POST extracts uploaded JSON file and its content and stores data in database (`Mockeroo` data in `static`)
-- Containerized database with data persistence and schema
-- Created development tasks defined from one tool `invoke`
-- Basic swagger API information on server
-- Client UI with upload button that can pick files
-- In the middle of creating ability to make POST requests to server after file upload
-
-TODOs based on project ask:
-  - Support for CSV file on POST endpoint (JSON only support at the moment)
-  - Create charts on client-side
-  - Create insights based on data
-
-Improvements that can be made but not exclusive to:
-- Proper error handling on server-side
-- Better accommodate potential error scenarios
-- API Key authentication on server-side
-- Pre-commit implementation to static analyze (format, lint, code coverage report, security scan code, security scan dependencies, etc.)
-- Code coverage service (e.g. SonarCloud) for both server and client
-- Set up CI/CD pipeline (e.g. Github Actions)
-  - Initial static analysis check
-  - Run unit/integration tests
-  - Build versioned artifacts to store in repository manager
-  - Deploy through promoting environment (dev, test, prod)
-  - etc.
-- IaC (e.g Terraform) to standup and configure cloud servers
-- Deployments using cloud services (e.g. GCP)
-- Configure environments for testing purposes for both server and client
-- Create data factories for tests
-- Quick smoke tests (assuming system built enough)
-- Log at critical points in server and client
-- Aggregate logs to observability platforms (e.g Splunk)
-- Create alerts on critical errors based on observations
-
-## Introspection
-
-When starting project `sagewhale`, I wanted to use frameworks, tools, and libraries that I'm either vaguely exposed to or weren't too familiar with. These included `flask-restx`, `react`, `chakra-ui`, etc. To no surprise, front-end work was what I was less comfortable working on because most of my engineering career had to do with the backend. I learned quite a lot from this experience and although I couldn't spend as much time as I wanted to with the given week, I'm stil proud of what I created regardless.
-
-I often think back to all the little nuances and moments of frustations that I (and I'm sure other engineers) encountered when creating something from scratch. Sometimes it's just the machine itself, like trying to develop on my M1 Macbook that doesn't quite work the same way as Intel Macbooks and brings its own set of problems because it's so new. It often reminds me that great engineers are the one who perserveres and adapts through the continuous frustrations that this career brings.
-
-On a high note, I think `sagewhale` was a good project to work on even though I didn't complete it (though can any project be truly completed?) the project ask.
