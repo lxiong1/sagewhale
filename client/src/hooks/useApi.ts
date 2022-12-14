@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const useApi = function (apiFunction: Function) {
+const useApi = function (apiFunction: any) {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const request = async function (...args: unknown[]) {
+  const request = async function (...args: any) {
     setLoading(true);
     try {
       const result = await apiFunction(...args);

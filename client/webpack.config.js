@@ -1,5 +1,7 @@
-import dotenv from "dotenv-webpack";
+import Dotenv from "dotenv-webpack";
 
 module.exports = {
-  plugins: [new dotenv()],
+  plugins: [
+    new Dotenv(),
+  ],
 };
