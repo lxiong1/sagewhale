@@ -16,18 +16,12 @@ const FileUploadButton = function () {
   });
 
   acceptedFiles.map((file) => {
-    console.log(file);
     formData.append("file", file, file.name);
-    console.log(formData.get("file"));
-    console.log(process.env.SAGEWHALE_API_URL);
   });
 
   useEffect(() => {
     jsonFiles.request(formData);
   }, []);
-
-  console.log(jsonFiles.error)
-  console.log(jsonFiles.data)
 
   return (
     <div {...getRootProps({ className: "dropzone" })}>

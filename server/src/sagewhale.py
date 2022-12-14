@@ -1,6 +1,7 @@
 import os
 from time import sleep
 from flask import Flask
+from flask_cors import CORS
 from dotenv import load_dotenv
 from models.subscriber_info_models import db
 from apis.subscriber_info_api import api
@@ -17,6 +18,7 @@ app.config[
     "SQLALCHEMY_DATABASE_URI"
 ] = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@localhost:{POSTGRES_PORT}/{POSTGRES_DB}"
 
+CORS(app)
 db.init_app(app)
 api.init_app(app)
 

@@ -9,6 +9,7 @@ flask-restx = "==1.0.3"
 flask-sqlalchemy = "==3.0.2"
 psycopg2-binary = "==2.9.5"
 python-dotenv = "==0.21.0"
+flask-cors = "*"
 
 [dev-packages]
 black = "*"
